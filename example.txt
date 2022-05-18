@@ -1,0 +1,55 @@
+Processi pesanti:
+	Processi veri e propri, con un loro spazio di indirizzamento
+	(propria area di memoria);
+
+
+Processi leggeri:
+	Sono thread, dunque segmenti di codice 
+	che vengono mandati in 	esecuzione durante il processo pesante.
+	Proprio come i processi pesanti, hanno degli stati:
+		1. Idle = Fermo, prima di essere mandato in esecuzione.
+		2. Ready = Pronto per essere eseguito.
+		3. Running = In esecuzione.
+		4. Dead = Terminato.
+		5. Blocked = In attesa dell'input dell'utente.
+		6. Waiting = In attesa di un evento.
+		7. Sleeping = In attesa del tempo della CPU.
+	
+	Possono operare in due modalita':
+		1. User-level, dove il thread non va ad effettuare 
+		chiamate di sistema
+		2. Kernel-level, dove il thread effettua chiamate di
+		sistema.
+
+	Hanno una loro tabella:
+		TCB {
+			registri, stack, stato di esecuzione, 
+			spazio di memoria per le variabili locali 
+			private, puntatore alla PCB del processo padre.
+		}
+	Hanno degli svantaggi e dei vantaggi:
+	Vantaggi:
+		Richiedono solo uno stack per thread,
+		La condivisione delle risorse e' garantita per natura,
+		Elevate prestazioni.
+	Svantaggi:
+		Possono danneggiare altri thread (poiche' possono
+		accedere alla stessa area di memoria),
+		Esclusione non garantita (non puo' vivere da solo).
+
+	In base all'evoluzione storica dei sistemi informatici, si puo'
+	capire che in base alle specifiche di sistema vi e' un vario
+	numero sia di processi, sia leggeri che pesanti, attivi in 
+	un solo momento:
+		MS-DOS = Singolo processo, singolo thread
+		Unix = Piu' processi, singoli thread per processo
+		Java Runtime = Singolo processo, piu' thread
+		Kernel moderni = Piu' processi, piu' thread per processo.
+	
+	Sono usati per fare piu' cose in contemporanea, in background e
+	foreground
+
+Multithreading:
+	Il multithreading e' quella proprieta' che definisce l'esistenza
+	di piu' thread all'interno di un processo pesante.
+
